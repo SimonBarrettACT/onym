@@ -332,6 +332,15 @@ return [
 ];
 ```
 
+>⚠️ **Note:**  
+>If you have previously published the `config/onym.php` file, you need to manually add the new `default_separator` key:
+>
+>```php
+>'default_separator' => '_',
+>```
+>
+>Otherwise, the fallback separator `_` will still be used automatically by the package.
+
 These defaults can be overridden on a per-call basis using the `options` parameter in the `make()` and in all strategy methods.
 
 ## License
