@@ -259,6 +259,23 @@ Onym::make('document', 'pdf', 'hash', [
 Onym::hash(string $defaultFilename, string $extension, ?array $options = [])
 ```
 
+## Customizing the Default Separator
+
+When creating an Onym instance manually (outside the facade),
+you can customize the default separator used between filename parts.
+
+```php
+use Blaspsoft\Onym\Onym;
+
+// Create an instance with a custom default separator
+$onym = new Onym([], '|');
+
+// Use the timestamp strategy with the custom separator
+$filename = $onym->timestamp('invoice', 'pdf');
+
+// Result: "2024-03-15|invoice.pdf"
+```
+
 ## Global Configuration
 
 You can set default values for all strategies in your `config/onym.php` file:
@@ -270,7 +287,10 @@ return [
 
     // Default extension when none is provided
     'default_extension' => 'txt',
-
+    
+    // Default separator when none is provided
+    'default_separator' => '_',
+    
     // Default strategy when none is specified
     'strategy' => 'random',
 
